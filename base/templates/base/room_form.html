@@ -1,0 +1,15 @@
+{% extends 'index.html' %}
+
+{%  block content%}
+
+<div>
+    <form action="" method="post">
+        {% csrf_token %}
+        <label for="name">Name
+            <input type="text" id="name">
+        </label>
+        <input type="submit" value="Submit">
+    </form>
+</div>
+
+{% endblock content%}

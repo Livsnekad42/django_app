@@ -1,0 +1,6 @@
+{% extends 'index.html' %}
+
+{% block content %}
+This is room #{{ room.id }}. It called {{ room.name }}. It contains {{ room.description }}
+    It was created {{ room.created }}. It was updated {{ room.updated }}
+{% endblock content %}
