@@ -21,5 +21,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='home'),
     path('room/<str:val>/', views.room, name='room'),
-    path('create-room/', views.createRoom, name='create-room')
+    path('create-room/', views.createRoom, name='create-room'),
+    path('update-room/<str:val>', views.updateRoom, name='update-room'),
+    path('destroy-room/<str:val>', views.destroyRoom, name='destroy-room')
 ]
