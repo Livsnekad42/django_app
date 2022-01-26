@@ -1,11 +1,13 @@
 from django.shortcuts import render, redirect
 from base.forms import RoomForm
-from base.models import Room
+from base.models import Room, Topic
 
 
 def index(request):
-    rooms = Room.objects.all()
-    context = {'rooms': rooms}
+    q = request.GET.get('q') if request.GET.get('q') is not None else ''
+    rooms = Room.objects.filter(topic__name__icontains=q)
+    topics = Topic.objects.all()
+    context = {'rooms': rooms, 'topics': topics}
     return render(request, 'base/home.html', context)
 
 
@@ -40,9 +42,7 @@ def updateRoom(request, val):
 
 def destroyRoom(request, val):
     _room = Room.objects.get(id=val)
-    form = RoomForm(instance=_room)
     if request.method == 'POST':
-        form = RoomForm(request.POST)
-        form.delete()
-    context = {'form': form}
-    return render(request, 'base/delete.html', context)
+        _room.delete()
+        return redirect('home')
+    return render(request, 'base/delete.html', {'obj': _room.name})
