@@ -25,6 +25,7 @@
 
 
     <div>
+    {{ room_count }} available
         <a href="{% url 'create-room' %}">Create room</a>
         {% for room in rooms %}
         <a href="{% url 'update-room' room.id%}">Редачить</a>

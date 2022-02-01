@@ -1,2 +1,7 @@
 <a href="/">Logo</a>
 <hr>
+
+<form action="{% url 'home' %}">
+    <input type="search" name="q">
+</form>
+<a href="{% url 'login' %}">Login</a>
